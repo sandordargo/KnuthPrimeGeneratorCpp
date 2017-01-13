@@ -1,0 +1,8 @@
+[bms]
+toolchain_path = /opt/1A/toolchain
+toolchain_name = x86_64-2.6.32-v2
+profile = toolchain_v2_static_debug
+
+[profile_toolchain_v2_static_debug]
+build.debug = 1
+build.shared = 0

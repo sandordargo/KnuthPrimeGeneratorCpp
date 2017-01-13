@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<componentDescription xmlns="http://gcnet/documentation/bms/metadata/1-0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="0.0" xsi:schemaLocation="http://gcnet/documentation/bms/metadata/1-0/ Description.xsd " bms_api="1">
+    <properties name="kata::KnuthPrimeGenerator" version="1-0-0-0">
+        <abstract>Christmas Tree Kata</abstract>
+        <contactPoint>Sandor Dargo</contactPoint>
+        <publicIncludes>
+            <dir name="include" filters="*.h"/>
+        </publicIncludes>
+        <configs>
+            <config name="main" default="true"/>
+        </configs>
+    </properties>
+    <componentPack>
+        <dependencies>
+            <dependenciesForConfig configs="main">
+                <versioner name="mdw::Pack" version="15-0-0-47" type="strong"/>
+                <dependency name="mdw::CFC" type="internal"/>
+            </dependenciesForConfig>
+        </dependencies>
+        <build>
+            <buildForConfig configs="main">
+                <library name="knuthPrimeGenerator">
+                    <sources> 
+                        <dir name="src" recursive="true" filters="*.cpp"/>
+                    </sources>
+                </library>
+                <includes>
+                    <dir name="src" filters="*.hpp"/>
+                </includes>
+            </buildForConfig>
+        </build>
+    </componentPack>
+    <unitTestPack>
+        <dependencies>
+            <dependenciesForConfig configs="main">
+                <versioner name="mdw::Pack" version="15-0-0-47" type="strong"/>
+                <versioner name="osp::OSPack" version="15-0-0-20" type="strong"/>
+                <dependency name="mdw::CFC" type="internal"/>
+                <dependency name="osp::Gtest" type="internal"/>
+                <dependency name="kata::KnuthPrimeGenerator" path="." type="internal" version="local"/>
+            </dependenciesForConfig>
+        </dependencies>
+        <build>
+            <buildForConfig configs="main">
+                <binary name="kataTest">
+                    <sources>
+                        <dir name="src" recursive="true" filters="*.cpp"/>
+                    </sources>
+                    <linkMode mode="static"/>
+                </binary>
+                <includes>
+                    <dir name="src" filters="*.hpp"/>
+                </includes>
+            </buildForConfig>
+        </build>
+    </unitTestPack>
+</componentDescription>
